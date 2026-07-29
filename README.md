@@ -1,2 +1,2 @@
 # C.O.D.E
-The ComitA space that provides mentorship and active guidance to help students develop the key skills needed to perform competitively in technology competitions.
+The Comité de Organización para el Desempeño de Excelencia is a space that provides mentorship and active guidance to help students develop the key skills needed to perform competitively in technology competitions.
