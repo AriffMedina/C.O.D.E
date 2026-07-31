@@ -52,8 +52,8 @@ export function Portada() {
           </Campo>
 
           <div className="space-y-7">
-            <Campo etiqueta="Semestre y grupo">
-              {meta.semestre} · {meta.grupo}
+            <Campo etiqueta={meta.grupo ? 'Cuatrimestre y grupo' : 'Cuatrimestre'}>
+              {meta.grupo ? `${meta.cuatrimestre} · Grupo ${meta.grupo}` : meta.cuatrimestre}
             </Campo>
             <Campo etiqueta="Docente">{meta.docente}</Campo>
             <Campo etiqueta="Fecha de entrega">

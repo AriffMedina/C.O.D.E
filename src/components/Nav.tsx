@@ -8,18 +8,25 @@ export function Nav() {
   const progreso = useReadingProgress()
   const activa = useActiveSection(ids)
   const [oscuro, setOscuro] = useState(false)
+  const [listo, setListo] = useState(false)
   const [compacta, setCompacta] = useState(false)
 
+  // El tema ya lo fijó el script en index.html; aquí solo lo leemos para que
+  // el botón arranque sincronizado y no invierta el estado en el primer clic.
   useEffect(() => {
-    const guardado = localStorage.getItem('code-tema')
-    const prefiere = window.matchMedia('(prefers-color-scheme: dark)').matches
-    setOscuro(guardado ? guardado === 'dark' : prefiere)
+    setOscuro(document.documentElement.dataset.theme === 'dark')
+    setListo(true)
   }, [])
 
   useEffect(() => {
+    if (!listo) return
     document.documentElement.dataset.theme = oscuro ? 'dark' : 'light'
-    localStorage.setItem('code-tema', oscuro ? 'dark' : 'light')
-  }, [oscuro])
+    try {
+      localStorage.setItem('code-tema', oscuro ? 'dark' : 'light')
+    } catch {
+      // Modo privado: el tema funciona igual, solo no se recuerda.
+    }
+  }, [oscuro, listo])
 
   useEffect(() => {
     const alScroll = () => setCompacta(window.scrollY > 120)

@@ -10,14 +10,15 @@
 - **Título:** Código de Ética de C.O.D.E.
 - **Subtítulo:** Compromiso de los integrantes del Comité de Organización y Desempeño de Excelencia
 - **Institución:** Tecnológico de Software
-- **Carrera:** Ingeniería en Desarrollo de Software `[CONFIRMAR]`
-- **Semestre y grupo:** `[PENDIENTE]`
-- **Docente:** `[PENDIENTE]`
+- **Carrera:** Desarrollo de Software y Negocios Digitales
+- **Cuatrimestre:** Tercero
+- **Grupo:** `[PENDIENTE — único dato que falta]`
+- **Docente:** Laura Espadas
 - **Equipo:**
-  - Mateo Martín `[apellido completo PENDIENTE]`
+  - Ariff Medina
+  - Mateo Martín
+  - Fernando Castro
   - Joaquin Uriona
-  - Ariff `[apellido completo PENDIENTE]`
-  - `[otros integrantes PENDIENTE]`
 - **Fecha de entrega:** 30 de julio de 2026
 - **Lugar:** Mérida, Yucatán, México
 
@@ -326,9 +327,10 @@ nosotros lo reciba, lo entienda y lo mejore.
 
 | Integrante | Rol en C.O.D.E. | Firma |
 |---|---|---|
-| Mateo Martín `[completar]` | `[rol]` | |
-| Joaquin Uriona | `[rol]` — Backend e Infraestructura | |
-| Ariff `[completar]` | `[rol]` | |
+| Ariff Medina | Núcleo Coordinador | |
+| Mateo Martín | Núcleo Coordinador | |
+| Fernando Castro | Núcleo Coordinador | |
+| Joaquin Uriona | Núcleo Coordinador — Backend e infraestructura | |
 
 ---
 

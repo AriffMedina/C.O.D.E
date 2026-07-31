@@ -10,6 +10,7 @@
     />
     <meta name="author" content="C.O.D.E. — Tecnológico de Software" />
     <meta name="theme-color" content="#FBFAF7" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Código de Ética · C.O.D.E." />
@@ -25,6 +26,21 @@
       href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..600;1,8..60,300..500&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
+    <script>
+      // Fija el tema antes del primer pintado: si esperamos a React, quien usa
+      // modo oscuro ve un destello blanco al cargar.
+      ;(function () {
+        try {
+          var guardado = localStorage.getItem('code-tema')
+          var oscuro = guardado
+            ? guardado === 'dark'
+            : matchMedia('(prefers-color-scheme: dark)').matches
+          document.documentElement.dataset.theme = oscuro ? 'dark' : 'light'
+        } catch (e) {
+          document.documentElement.dataset.theme = 'light'
+        }
+      })()
+    </script>
   </head>
   <body>
     <div id="root"></div>

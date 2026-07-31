@@ -10,9 +10,10 @@ export const meta = {
   epigrafe: 'No qué podemos construir, sino qué debemos construir.',
   institucion: 'Tecnológico de Software',
   carrera: 'Desarrollo de Software y Negocios Digitales',
-  semestre: '[semestre]',
-  grupo: '[grupo]',
-  docente: '[nombre del docente]',
+  cuatrimestre: 'Tercer cuatrimestre',
+  /** Si se deja vacío, la portada omite el renglón del grupo. */
+  grupo: '',
+  docente: 'Laura Espadas',
   version: 'v1.0',
   fecha: '30 de julio de 2026',
   fechaISO: '2026-07-30',
