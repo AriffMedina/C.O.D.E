@@ -1,0 +1,194 @@
+@import 'tailwindcss';
+
+/* ── Sistema de diseño ────────────────────────────────────────────────
+   Manifiesto editorial: papel cálido, tinta profunda, una sola voz de
+   acento. Todo tokenizado para que el modo oscuro y la impresión sean
+   un cambio de variables, no un rediseño.
+   ─────────────────────────────────────────────────────────────────── */
+
+/* Las utilidades de Tailwind (bg-paper, text-ink…) apuntan a variables de
+   runtime, no a hex fijos: así el modo oscuro y la impresión se resuelven
+   redefiniendo las variables, sin duplicar clases. */
+@theme {
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Source Serif 4', Georgia, serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-paper-3: var(--paper-3);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-rule: var(--rule);
+  --color-rule-strong: var(--rule-strong);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-cost: var(--cost);
+  --color-cost-soft: var(--cost-soft);
+}
+
+:root {
+  --paper: #fbfaf7;
+  --paper-2: #f4f1ea;
+  --paper-3: #ebe6db;
+  --ink: #1a1917;
+  --ink-2: #4a4740;
+  --ink-3: #7c776c;
+  --rule: #ded8ca;
+  --rule-strong: #c4bcaa;
+  --accent: #1f5c48;
+  --accent-soft: #e4efe9;
+  --cost: #8a5214;
+  --cost-soft: #f6ecdc;
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --paper: #12110f;
+  --paper-2: #1b1a17;
+  --paper-3: #262420;
+  --ink: #f2efe8;
+  --ink-2: #b8b3a7;
+  --ink-3: #8a857a;
+  --rule: #34312b;
+  --rule-strong: #4a463e;
+  --accent: #6fbf9c;
+  --accent-soft: #16302668;
+  --cost: #d9a05b;
+  --cost-soft: #2f240f80;
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Capitular de la introducción */
+.dropcap::first-letter {
+  font-family: var(--font-display);
+  font-size: 4.1em;
+  line-height: 0.82;
+  float: left;
+  padding-right: 0.09em;
+  padding-top: 0.06em;
+  font-weight: 400;
+  color: var(--accent);
+}
+
+/* Aparición al hacer scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal[data-visible='true'] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ── Impresión / exportar a PDF ──────────────────────────────────────
+   El sitio se convierte en documento formal: sin navegación, sin
+   controles, tipografía serif a 11pt y saltos de página controlados.
+   ─────────────────────────────────────────────────────────────────── */
+@media print {
+  :root {
+    --paper: #ffffff;
+    --paper-2: #ffffff;
+    --paper-3: #ffffff;
+    --ink: #000000;
+    --ink-2: #1f1f1f;
+    --ink-3: #454545;
+    --rule: #b6b6b6;
+    --rule-strong: #7a7a7a;
+    --accent: #12402f;
+    --accent-soft: #ffffff;
+    --cost: #5c360b;
+    --cost-soft: #ffffff;
+    color-scheme: light;
+  }
+
+  @page {
+    size: letter;
+    margin: 2cm 2.1cm;
+  }
+
+  body {
+    background: #fff;
+    font-size: 11pt;
+    line-height: 1.55;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .print-break-before {
+    break-before: page;
+  }
+
+  .print-avoid-break {
+    break-inside: avoid;
+  }
+
+  h1,
+  h2,
+  h3 {
+    break-after: avoid;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+.print-only {
+  display: none;
+}
